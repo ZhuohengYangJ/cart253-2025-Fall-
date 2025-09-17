@@ -12,6 +12,7 @@
  * OH LOOK I DIDN'T DESCRIBE SETUP!!
 */
 function setup() {
+    createCanvas(480, 480);
 
 }
 
@@ -20,5 +21,15 @@ function setup() {
  * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
 */
 function draw() {
+    //The cheese
+    background(255, 255, 0);
+
+    //The hole
+    push();
+    noStroke();
+    fill(0);
+    ellipse(140, 175, 180);
+    pop();
+
 
 }
