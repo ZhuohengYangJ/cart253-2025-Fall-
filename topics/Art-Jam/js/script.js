@@ -30,6 +30,8 @@ function drawFace(x, y, width, height, h, s, b) {
     for (let i = 0; i < 1000; i++){
         let angle = random(TWO_PI);
         let radius = random(0, 1);
+        let px = x + cos(angle) * (width / 2) * radius;
+        let py = y + sin(angle) * (height / 2) * radius;
         px = x + cos(angle) * (width / 2) * radius;
         py = y + sin(angle) * (height / 2) * radius;
         let hue = h + random(-5, 5);
