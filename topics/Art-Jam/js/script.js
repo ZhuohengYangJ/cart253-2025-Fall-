@@ -16,9 +16,7 @@ function setup() {
 
 }
 
-/**
- * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
-*/
+
 function draw() {
     background("#ADD8E6");
     translate(width / 2, height / 2);
@@ -26,6 +24,8 @@ function draw() {
 
 
 }
+
+//draw my face
 function drawFace(x, y, width, height, h, s, b) {
     for (let i = 0; i < 1000; i++){
         let angle = random(TWO_PI);
