@@ -9,7 +9,7 @@
 "use strict";
 
 /**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
+ background
 */
 function setup() {
     createCanvas(640, 640);
@@ -21,6 +21,7 @@ function draw() {
     background("#ADD8E6");
     translate(width / 2, height / 2);
     drawFace(0, 0, 200, 250, 30, 60, 80);
+    drawLEye();
 
 
 }
@@ -40,4 +41,29 @@ function drawFace(x, y, width, height, h, s, b) {
         fill(hue, sat, bright);
         circle(px, py, random(2, 4));
     }
+    //left eye
+    push();
+    fill("#f50808");
+    strokeWeight(2);
+    stroke("#eddb0d");
+    ellipse(-25, 5, 20);
+    pop();
+
+    //right eye
+    push();
+    fill("#f50808");
+    strokeWeight(2);
+    stroke("#eddb0d");
+    ellipse(25, 5, 20);
+    pop();
+
+    //mouth
+    push();
+    fill("#f50808");
+    strokeWeight(2);
+    stroke("#eddb0d");
+    triangle(50, 70, -50, 70, 0, 25);
+    pop();
+
+
 }
