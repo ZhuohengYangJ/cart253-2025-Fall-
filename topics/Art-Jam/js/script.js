@@ -20,14 +20,15 @@ function setup() {
 function draw() {
     background("#ADD8E6");
     translate(width / 2, height / 2);
-    drawFace(0, 0, 200, 250, 30, 60, 80);
-    drawLEye();
+   drawFace(0, 0, 200, 250, 30, 60, 80);
+    //drawLEye();
 
 
 }
 
 //draw my face
 function drawFace(x, y, width, height, h, s, b) {
+    console.log("hello");
     for (let i = 0; i < 1000; i++){
         let angle = random(TWO_PI);
         let radius = random(0, 1);
