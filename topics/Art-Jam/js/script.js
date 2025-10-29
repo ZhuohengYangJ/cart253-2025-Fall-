@@ -28,7 +28,6 @@ function draw() {
 
 //draw my face
 function drawFace(x, y, width, height, h, s, b) {
-    console.log("hello");
     for (let i = 0; i < 1000; i++){
         let angle = random(TWO_PI);
         let radius = random(0, 1);
