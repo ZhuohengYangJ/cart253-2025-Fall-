@@ -55,7 +55,7 @@ function draw() {
 }
 
 //press key to add balls
-function keyPressed() {
+function mouseClicked() {
     let ball = createBall();
     balls.push(ball);
 }
