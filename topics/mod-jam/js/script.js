@@ -65,7 +65,7 @@ const fly = {
 };
 
 function preload() {
-    eatSound = loadSound('assets/sounds/bark.wav');
+    eatSound = loadSound('assets/sounds/frog.mp3');
 }
 
 /**
