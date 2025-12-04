@@ -1,21 +1,12 @@
-/**
- * This file contains the code to run *only* the green variation part of the program.
- * Snake with randomly appearing/disappearing blocks
- * 
- * Note: Shared variables (snake, food, gridSize, etc.) are declared in script.js
- */
-
-// Green variation specific variables
+//G
 let blocks = [];
 let blockTimer = 0;
 let blockInterval = 60; // Create new block every 60 frames
 let blockLifetime = 120; // Blocks disappear after 120 frames
 
-/**
- * This will be called just before the green variation starts
- */
+
+//
 function greenSetup() {
-    // Initialize snake in the center
     snake = [{ x: floor(width / gridSize / 2) * gridSize, y: floor(height / gridSize / 2) * gridSize }];
     direction = { x: gridSize, y: 0 };
     nextDirection = { x: gridSize, y: 0 };
@@ -35,7 +26,7 @@ function generateFood() {
         y: floor(random(rows)) * gridSize
     };
     
-    // Make sure food doesn't spawn on snake or blocks
+
     for (let segment of snake) {
         if (segment.x === food.x && segment.y === food.y) {
             generateFood();
@@ -59,27 +50,24 @@ function createRandomBlock() {
         lifetime: blockLifetime
     };
     
-    // Make sure block doesn't spawn on snake, food, or existing blocks
+    // Make sure block doesn't spawn on snake and insta gameover
     for (let segment of snake) {
         if (segment.x === newBlock.x && segment.y === newBlock.y) {
-            return; // Skip this block
+            return;
         }
     }
     if (food.x === newBlock.x && food.y === newBlock.y) {
-        return; // Skip this block
+        return;
     }
     for (let block of blocks) {
         if (block.x === newBlock.x && block.y === newBlock.y) {
-            return; // Skip this block
+            return;
         }
     }
     
     blocks.push(newBlock);
 }
 
-/**
- * This will be called every frame when the green variation is active
- */
 function greenDraw() {
     background(20, 20, 20);
     
@@ -103,7 +91,7 @@ function greenDraw() {
         createRandomBlock();
     }
     
-    // Update blocks lifetime and remove expired ones
+    // Update new blocks and remove expired ones
     for (let i = blocks.length - 1; i >= 0; i--) {
         blocks[i].lifetime--;
         if (blocks[i].lifetime <= 0) {
@@ -161,8 +149,7 @@ function greenDraw() {
     // Draw food
     fill(255, 100, 100);
     rect(food.x, food.y, gridSize, gridSize);
-    
-    // Draw blocks (with opacity based on lifetime)
+
     for (let block of blocks) {
         let opacity = map(block.lifetime, 0, blockLifetime, 100, 255);
         fill(255, 200, 0, opacity);
@@ -185,9 +172,7 @@ function greenDraw() {
     pop();
 }
 
-/**
- * This will be called whenever a key is pressed while the green variation is active
- */
+//keypress
 function greenKeyPressed(event) {
     if (event.keyCode === 27) {
         state = "menu";

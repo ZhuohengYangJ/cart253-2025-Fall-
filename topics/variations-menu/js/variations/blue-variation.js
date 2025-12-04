@@ -1,21 +1,14 @@
-/**
- * This file contains the code to run *only* the blue variation part of the program.
- * Snake with 2-second pause mechanism
- * 
- * Note: Shared variables (snake, food, gridSize, etc.) are declared in script.js
- */
 
-// Blue variation specific variables
+//R
 let isPaused = false;
 let pauseTimer = 0;
-let pauseDuration = 120; // 2 seconds at 60fps
+let pauseDuration = 120;
 let pauseInterval = 300; // Pause every 5 seconds (300 frames)
+let soundEffect;
 
-/**
- * This will be called just before the blue variation starts
- */
+
 function blueSetup() {
-    // Initialize snake in the center
+    //center the snake
     snake = [{ x: floor(width / gridSize / 2) * gridSize, y: floor(height / gridSize / 2) * gridSize }];
     direction = { x: gridSize, y: 0 };
     nextDirection = { x: gridSize, y: 0 };
@@ -25,6 +18,10 @@ function blueSetup() {
     pauseTimer = 0;
     frameCounter = 0;
     generateFood();
+}
+
+function loadSound(){
+    soundEffect = loadSound('assets/sounds/bark.wav');
 }
 
 function generateFood() {
@@ -44,9 +41,7 @@ function generateFood() {
     }
 }
 
-/**
- * This will be called every frame when the blue variation is active
- */
+
 function blueDraw() {
     background(20, 20, 20);
     
@@ -63,7 +58,7 @@ function blueDraw() {
         return;
     }
     
-    // Handle pause mechanism
+    //pause
     if (!isPaused) {
         pauseTimer++;
         // Check if it's time to pause
@@ -79,8 +74,7 @@ function blueDraw() {
             pauseTimer = 0;
         }
     }
-    
-    // Draw game elements
+
     // Draw food
     fill(255, 100, 100);
     rect(food.x, food.y, gridSize, gridSize);
@@ -103,7 +97,7 @@ function blueDraw() {
         textSize(16);
         text("2 seconds...", width / 2, height / 2 + 40);
         pop();
-        return; // Don't update game logic while paused
+        return;
     }
     
     // Update frame counter and only move snake every N frames
@@ -155,9 +149,7 @@ function blueDraw() {
     pop();
 }
 
-/**
- * This will be called whenever a key is pressed while the blue variation is active
- */
+//keypress
 function blueKeyPressed(event) {
     if (event.keyCode === 27) {
         state = "menu";
@@ -171,7 +163,7 @@ function blueKeyPressed(event) {
     
     if (gameOver || isPaused) return;
     
-    // Arrow keys
+    // Arrow keys control
     if (event.keyCode === UP_ARROW) {
         if (direction.y === 0) nextDirection = { x: 0, y: -gridSize };
     } else if (event.keyCode === DOWN_ARROW) {

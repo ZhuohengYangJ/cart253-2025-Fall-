@@ -9,7 +9,7 @@ SNAKE GAME VARIATIONS
 
 (R) Default Snake
 (G) Blocks Appear/Disappear
-(B) Auto-Pause Every 5s`
+(B) Hell: Auto-Pause Every 5s`
 
 /**
  * Display the main menu

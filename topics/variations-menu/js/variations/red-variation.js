@@ -1,15 +1,5 @@
-/**
- * This file contains the code to run *only* the red variation part of the program.
- * Default Snake game
- * 
- * Note: Shared variables (snake, food, gridSize, etc.) are declared in script.js
- */
-
-/**
- * This will be called just before the red variation starts
- */
+//B
 function redSetup() {
-    // Initialize snake in the center
     snake = [{ x: floor(width / gridSize / 2) * gridSize, y: floor(height / gridSize / 2) * gridSize }];
     direction = { x: gridSize, y: 0 };
     nextDirection = { x: gridSize, y: 0 };
@@ -36,9 +26,7 @@ function generateFood() {
     }
 }
 
-/**
- * This will be called every frame when the red variation is active
- */
+
 function redDraw() {
     background(20, 20, 20);
     
@@ -54,13 +42,10 @@ function redDraw() {
         pop();
         return;
     }
-    
-    // Update frame counter and only move snake every N frames
     frameCounter++;
     if (frameCounter >= moveSpeed) {
         frameCounter = 0;
-        
-        // Update snake direction
+
         direction = { x: nextDirection.x, y: nextDirection.y };
         
         // Move snake
@@ -68,13 +53,13 @@ function redDraw() {
             x: snake[0].x + direction.x,
             y: snake[0].y + direction.y
         };
-        
-        // Check wall collision
+
         if (head.x < 0 || head.x >= width || head.y < 0 || head.y >= height) {
             gameOver = true;
             return;
         }
         
+
         // Check self collision
         for (let segment of snake) {
             if (head.x === segment.x && head.y === segment.y) {
@@ -129,7 +114,6 @@ function redKeyPressed(event) {
     
     if (gameOver) return;
     
-    // Arrow keys
     if (event.keyCode === UP_ARROW) {
         if (direction.y === 0) nextDirection = { x: 0, y: -gridSize };
     } else if (event.keyCode === DOWN_ARROW) {
